@@ -1,5 +1,6 @@
-package com.university;
+package com.university.AppTest;
 
+import com.university.App;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
