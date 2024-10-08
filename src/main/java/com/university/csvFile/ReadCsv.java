@@ -7,19 +7,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadCsv {
-    private List<String[]> data;
-    public ReadCsv(String[] args){
-        this.data = new ArrayList<>();
-        readCsv(args);
+    public ReadCsv(String filePath){
+        readCsv(filePath);
     }
-    public void readCsv(String[] args){
+
+    public void readCsv(String filePath){
         String line = "";
         String splitBy = ",";
         BufferedReader br = null;
+        List<String[]> data = new ArrayList<>();
 
         try {
             // Ruta del archivo 'expected.csv' en la carpeta 'resources'
-            br = new BufferedReader(new FileReader("src/main/resources/input.csv"));
+            br = new BufferedReader(new FileReader(filePath));
 
             while (true) {
                 try {
@@ -37,7 +37,4 @@ public class ReadCsv {
         }
     }
 
-    public List<String[]> getData(){
-        return data;
-    }
 }

@@ -19,18 +19,23 @@ public class Student {
     public String getName() {
         return name;
     }
+
     public String getEmail(){
         return email;
     }
+
     public List<Course> getSubjects() {
         return subjects;
     }
+
     public void addSubject(Course course){
         subjects.add(course);
     }
+
     public int courseCount(){
         return subjects.size();
     }
+
     public boolean equals(Student student){
         return student.getName().equals(name)
                 && student.getSubjects().equals(subjects)
