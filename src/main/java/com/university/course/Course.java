@@ -2,6 +2,7 @@ package com.university.course;
 
 import com.university.student.Student;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Course {
@@ -14,6 +15,7 @@ public class Course {
         this.subject = subject;
         this.classroom = classroom;
         this.teacher = teacher;
+        this.students = new ArrayList<>();
     }
 
     public String getSubject() {

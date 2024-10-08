@@ -31,4 +31,9 @@ public class Student {
     public int courseCount(){
         return subjects.size();
     }
+    public boolean equals(Student student){
+        return student.getName().equals(name)
+                && student.getSubjects().equals(subjects)
+                && student.getEmail().equals(email);
+    }
 }
