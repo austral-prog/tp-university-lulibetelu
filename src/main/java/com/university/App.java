@@ -28,7 +28,7 @@ public class App {
 
     public static void main(String[] args) {
 
-        ReadCsv readCsv = new ReadCsv("src/main/resources/input.csv");
+        ReadCsv readCsv = new ReadCsv();
         data = readCsv.getData();
 
         CreateStudent createStudent = new CreateStudent(data);
