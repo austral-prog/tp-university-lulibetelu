@@ -1,11 +1,12 @@
 package com.university.student;
 
+import com.university.Printable;
 import com.university.course.Course;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student {
+public class Student implements Printable {
     private String name;
     private String email;
     private List<Course> subjects;
@@ -32,13 +33,17 @@ public class Student {
         subjects.add(course);
     }
 
-    public int courseCount(){
-        return subjects.size();
+    public int courseCount(){ return subjects.size(); }
+
+    @Override
+    public String toStringForSolution() {
+        return name + "," + subjects.size();
     }
 
-    public boolean equals(Student student){
-        return student.getName().equals(name)
-                && student.getSubjects().equals(subjects)
-                && student.getEmail().equals(email);
-    }
+    @Override
+    public int compareTo(Object o) {
+        Student student = (Student) o;
+        return name.compareTo(student.getName());
+        }
 }
+

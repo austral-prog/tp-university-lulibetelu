@@ -1,7 +1,10 @@
 package com.university.AppTest.StudentTest;
 
 import com.university.course.CreateCourses;
+import com.university.course.StudentsPerCourse;
+import com.university.student.CoursesPerStudent;
 import com.university.student.CreateStudent;
+import com.university.student.Student;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -30,6 +33,12 @@ public class TestCreateStudents {
         CreateStudent newStudent = new CreateStudent(data);
 
         assertEquals(1, newStudent.getStudents().size());
+    }
+
+    @Test
+    public void test2ToStringForSolution(){
+        Student student= new Student("Facu", "facu@mail");
+        assertEquals("Facu,0",student.toStringForSolution());
     }
 }
 

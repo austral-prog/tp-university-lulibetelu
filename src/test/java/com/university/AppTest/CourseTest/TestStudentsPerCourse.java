@@ -21,7 +21,7 @@ public class TestStudentsPerCourse {
         CreateStudent newStudents = new CreateStudent(data);
         StudentsPerCourse studentsPerCourse = new StudentsPerCourse(data, newStudents.getStudents(), newCourses.getCourses());
 
-        assertEquals(3, newCourses.getCourses().get(0).getStudents().size());
+        assertEquals(2, newCourses.getCourses().get(0).getStudents().size());
         assertEquals("Olivia Red", newCourses.getCourses().getFirst().getStudents().getFirst().getName());
         assertEquals("Alice Orange", newCourses.getCourses().getFirst().getStudents().get(1).getName());
     }

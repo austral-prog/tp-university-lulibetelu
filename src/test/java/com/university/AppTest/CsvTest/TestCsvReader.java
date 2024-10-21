@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestCsvReader {
     @Test
     public void readCsv(){
-        ReadCsv reader = new ReadCsv();
+        ReadCsv reader = new ReadCsv("src/main/resources/input.csv");
         assertEquals(reader.getData().get(0)[0], "578");
         assertEquals(reader.getData().get(0)[1], "Political Science");
         assertEquals(reader.getData().get(0)[2], "Olivia Red");
