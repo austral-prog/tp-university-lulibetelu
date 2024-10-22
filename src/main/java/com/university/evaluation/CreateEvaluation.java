@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreateEvaluation {
-    private List<Evaluation> evaluations;
+    private List<Evaluationold> evaluations;
     public CreateEvaluation(List<String[]> data, List<Course> courses, List<Student> students){
         this.evaluations = new ArrayList<>();
         createEvaluations(data, courses, students);
@@ -30,7 +30,7 @@ public class CreateEvaluation {
                     if (course.getSubject().equals(datum[1])) {
                         for (Student student: students) {
                             if (student.getName().equals(datum[0])) {
-                                Evaluation evaluation = new Evaluation(student, course, datum[2], datum[3], datum[4], datum[5]);
+                                Evaluationold evaluation = new Evaluationold(student, course, datum[2], datum[3], datum[4], datum[5]);
                                 evaluations.add(evaluation);
                             }
                         }
@@ -41,7 +41,7 @@ public class CreateEvaluation {
 
     }
 
-    public List<Evaluation> getEvaluations(){
+    public List<Evaluationold> getEvaluations(){
         return evaluations;
     }
 

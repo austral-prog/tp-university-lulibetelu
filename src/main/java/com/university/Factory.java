@@ -5,7 +5,7 @@ import com.university.course.CreateCourses;
 import com.university.course.StudentsPerCourse;
 import com.university.csvFile.WriteCsv;
 import com.university.evaluation.CreateEvaluation;
-import com.university.evaluation.Evaluation;
+import com.university.evaluation.Evaluationold;
 import com.university.sortable.Sorter;
 import com.university.student.CoursesPerStudent;
 import com.university.student.CreateStudent;
@@ -18,7 +18,7 @@ import java.util.List;
 public class Factory {
     static List<Student> students = new ArrayList<>();
     static List<Course> courses = new ArrayList<>();
-    static List<Evaluation> evaluations = new ArrayList<>();
+    static List<Evaluationold> evaluations = new ArrayList<>();
     static List<Student> orderedStudents = new ArrayList<>();
 
     public Factory(List<String[]> data, List<String[]> data2){
