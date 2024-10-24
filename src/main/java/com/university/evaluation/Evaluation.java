@@ -46,15 +46,15 @@ public class Evaluation implements Printable {
     }
 
     public String calculateGrade() {
-        int total = 0;
+        float total = 0;
         int counter = 0;
         if (!excercises.isEmpty()) {
             for (Excercise excercise : excercises) {
-                total += Integer.parseInt(excercise.getGrade());
+                total += Float.parseFloat(excercise.getGrade());
                 counter++;
             }
         }
-        return String.valueOf((float)(total / counter));
+        return String.valueOf(total / counter);
     }
 
     @Override
