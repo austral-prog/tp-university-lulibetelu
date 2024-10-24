@@ -54,7 +54,7 @@ public class Evaluation implements Printable {
                 counter++;
             }
         }
-        return String.valueOf(total / counter);
+        return String.valueOf((float)(total / counter));
     }
 
     @Override
