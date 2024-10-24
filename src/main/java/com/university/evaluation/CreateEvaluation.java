@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreateEvaluation {
-    private List<Evaluationold> evaluations;
+    private List<Evaluation> evaluations;
     public CreateEvaluation(List<String[]> data, List<Course> courses, List<Student> students){
         this.evaluations = new ArrayList<>();
         createEvaluations(data, courses, students);
@@ -19,19 +19,26 @@ public class CreateEvaluation {
             while (count < evaluations.size()) {
                 if (evaluations.get(count).getEvaluationType().equals(datum[2])
                 && evaluations.get(count).getEvaluationName().equals(datum[3])
-                && evaluations.get(count).getCourse().getSubject().equals(datum[1])) {
+                && evaluations.get(count).getCourse().equals(datum[1])
+                && evaluations.get(count).getStudent().equals(datum[0])) {
                     found = true;
+                    Excercise excercise = new Excercise(datum[4], datum[5]);
+                    evaluations.get(count).addExcercises(excercise);
                     break;
                 }
                 count++;
+
             }
             if (!found) {
                 for (Course course: courses) {
                     if (course.getSubject().equals(datum[1])) {
                         for (Student student: students) {
                             if (student.getName().equals(datum[0])) {
-                                Evaluationold evaluation = new Evaluationold(student, course, datum[2], datum[3], datum[4], datum[5]);
+                                Evaluation evaluation = new Evaluation(student, course, datum[2], datum[3]);
+                                Excercise excercise = new Excercise(datum[4], datum[5]);
                                 evaluations.add(evaluation);
+                                evaluation.addExcercises(excercise);
+
                             }
                         }
                     }
@@ -41,7 +48,7 @@ public class CreateEvaluation {
 
     }
 
-    public List<Evaluationold> getEvaluations(){
+    public List<Evaluation> getEvaluations(){
         return evaluations;
     }
 

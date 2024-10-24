@@ -5,7 +5,7 @@ import com.university.course.CreateCourses;
 import com.university.course.StudentsPerCourse;
 import com.university.csvFile.WriteCsv;
 import com.university.evaluation.CreateEvaluation;
-import com.university.evaluation.Evaluationold;
+import com.university.evaluation.Evaluation;
 import com.university.sortable.Sorter;
 import com.university.student.CoursesPerStudent;
 import com.university.student.CreateStudent;
@@ -18,7 +18,7 @@ import java.util.List;
 public class Factory {
     static List<Student> students = new ArrayList<>();
     static List<Course> courses = new ArrayList<>();
-    static List<Evaluationold> evaluations = new ArrayList<>();
+    static List<Evaluation> evaluations = new ArrayList<>();
     static List<Student> orderedStudents = new ArrayList<>();
 
     public Factory(List<String[]> data, List<String[]> data2){
@@ -36,10 +36,16 @@ public class Factory {
         Sorter<Student> newSorter = new Sorter<>(students, Comparator.comparing(Student::getName));
         orderedStudents = newSorter.getOrderedList();
 
-        WriteCsv writeCsv = new WriteCsv("src/main/resources/solution.csv", orderedStudents, "Student_Name,Course_Count");
+        WriteCsv solution1 = new WriteCsv("src/main/resources/solution.csv", orderedStudents, "Student_Name,Course_Count");
 
 
         CreateEvaluation evaluation = new CreateEvaluation(data2, courses, orderedStudents);
         evaluations = evaluation.getEvaluations();
+
+        Sorter<Evaluation> sorter2 = new Sorter<>(evaluations, Comparator.comparing(Evaluation::getCourse)
+                .thenComparing(Evaluation::getEvaluationName)
+                .thenComparing(Evaluation::getStudent));
+
+        WriteCsv expected2 = new WriteCsv("src/main/resources/expected_2.csv", evaluations, "Subject_Name,Evaluation_Name,Student_Name,Grade");
     }
 }
