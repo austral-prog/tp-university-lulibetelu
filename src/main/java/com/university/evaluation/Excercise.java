@@ -7,8 +7,8 @@ public class Excercise {
         this.name = name;
         this.grade = grade;
     }
-    public String getGrade(){
-        return grade;
+    public Float getGrade(){
+        return Float.parseFloat(grade);
     }
     public String getName(){
         return name;

@@ -3,6 +3,9 @@ package com.university.AppTest;
 import com.university.course.Course;
 import com.university.evaluation.Evaluation;
 import com.university.evaluation.Excercise;
+import com.university.evaluation.typesOfEval.OralExam;
+import com.university.evaluation.typesOfEval.PracticalWork;
+import com.university.evaluation.typesOfEval.WrittenExam;
 import com.university.sortable.Sorter;
 import com.university.student.Student;
 import org.junit.jupiter.api.BeforeEach;
@@ -50,11 +53,11 @@ public class TestSorter {
     @Test
     public void testSorterEvaluations(){
 
-        Evaluation eval1 = new Evaluation(students.getFirst(), courses.getFirst(), "Written", "Final");
+        Evaluation eval1 = new WrittenExam(students.getFirst(), courses.getFirst(), "Written", "Final");
         evaluations.add(eval1);
-        Evaluation eval2 = new Evaluation(students.get(1), courses.get(1), "Practical", "TP");
+        Evaluation eval2 = new PracticalWork(students.get(1), courses.get(1), "Practical", "TP");
         evaluations.add(eval2);
-        Evaluation eval3 = new Evaluation(students.get(2), courses.get(2), "Oral", "Exam");
+        Evaluation eval3 = new OralExam(students.get(2), courses.get(2), "Oral", "Exam");
         evaluations.add(eval3);
 
         Excercise e1 = new Excercise("Ej2", "5");

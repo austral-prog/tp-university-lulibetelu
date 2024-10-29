@@ -1,12 +1,11 @@
 package com.university.sortable;
 
-import com.university.Printable;
-
+import com.university.Formattable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class Sorter <T>{
+public class Sorter <T extends Formattable>{
     private List<T> list;
     private Comparator<T> comparator;
     public Sorter (List<T> list, Comparator<T> comparator){

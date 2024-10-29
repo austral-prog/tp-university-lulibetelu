@@ -1,6 +1,10 @@
 package com.university.evaluation;
 
 import com.university.course.Course;
+import com.university.evaluation.typesOfEval.FinalExam;
+import com.university.evaluation.typesOfEval.OralExam;
+import com.university.evaluation.typesOfEval.PracticalWork;
+import com.university.evaluation.typesOfEval.WrittenExam;
 import com.university.student.Student;
 
 import java.util.ArrayList;
@@ -34,10 +38,37 @@ public class CreateEvaluation {
                     if (course.getSubject().equals(datum[1])) {
                         for (Student student: students) {
                             if (student.getName().equals(datum[0])) {
-                                Evaluation evaluation = new Evaluation(student, course, datum[2], datum[3]);
                                 Excercise excercise = new Excercise(datum[4], datum[5]);
-                                evaluations.add(evaluation);
-                                evaluation.addExcercises(excercise);
+
+                                if (datum[2].contains("FINAL")){
+                                  Evaluation eval = new FinalExam(student, course, datum[2], datum[3]);
+                                  student.addEvaluation(eval);
+                                  evaluations.add(eval);
+                                  eval.addExcercises(excercise);
+                                  course.addEval(eval);
+
+                                }
+                                else if (datum[2].equals("ORAL_EXAM")){
+                                    Evaluation eval = new OralExam(student, course, datum[2], datum[3]);
+                                    student.addEvaluation(eval);
+                                    evaluations.add(eval);
+                                    eval.addExcercises(excercise);
+                                    course.addEval(eval);
+                                }
+                                else if (datum[2].equals("PRACTICAL_WORK")){
+                                    Evaluation eval = new PracticalWork(student, course, datum[2], datum[3]);
+                                    student.addEvaluation(eval);
+                                    evaluations.add(eval);
+                                    eval.addExcercises(excercise);
+                                    course.addEval(eval);
+                                }
+                                else if (datum[2].equals("WRITTEN_EXAM")){
+                                    Evaluation eval = new WrittenExam(student, course, datum[2], datum[3]);
+                                    student.addEvaluation(eval);
+                                    evaluations.add(eval);
+                                    eval.addExcercises(excercise);
+                                    course.addEval(eval);
+                                }
 
                             }
                         }
