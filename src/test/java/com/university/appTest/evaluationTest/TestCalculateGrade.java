@@ -1,4 +1,4 @@
-package com.university.AppTest.evaluationTest;
+package com.university.appTest.evaluationTest;
 
 import com.university.course.Course;
 import com.university.evaluation.Evaluation;
@@ -8,11 +8,7 @@ import com.university.evaluation.typesOfEval.OralExam;
 import com.university.evaluation.typesOfEval.PracticalWork;
 import com.university.evaluation.typesOfEval.WrittenExam;
 import com.university.student.Student;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

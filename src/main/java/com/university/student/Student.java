@@ -4,10 +4,7 @@ import com.university.Formattable;
 import com.university.course.Course;
 import com.university.evaluation.Evaluation;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Student implements Formattable<Student> {
     private String name;
@@ -27,9 +24,7 @@ public class Student implements Formattable<Student> {
 
     public String getName() { return name; }
 
-    public String getEmail(){
-        return email;
-    }
+    public String getEmail(){ return email; }
 
     public List<Course> getSubjects() {
         return subjects;
@@ -61,7 +56,22 @@ public class Student implements Formattable<Student> {
 
 
     @Override
-    public String toStringForSolution() { return name + "," + subjects.size(); }
+    public String toStringForSolution() {
+        return name + "," + subjects.size(); }
+
+
+    public String toStringForSolution2(){
+        String message = "";
+        for (Map.Entry<String, List<Boolean>> entry : report.entrySet()){
+            if (entry.getValue().contains(false)){
+                message = name + "," + entry.getKey() + "," + "Desaprobado";
+            }
+            else{
+                message = name + "," + entry.getKey() + "," + "Aprobado";
+            }
+        }
+        return message;
+    }
 
     @Override
     public int compareTo(Student student) {

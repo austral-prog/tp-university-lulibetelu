@@ -1,6 +1,6 @@
-package com.university.passingCriteria;
+package com.university.passingCriteria.criteria;
 
-public class MinAboveValue implements Approvable{
+public class MinAboveValue implements Checkers{
     private float grade;
     private float criteria;
     public MinAboveValue(float grade, float criteria){
@@ -17,4 +17,5 @@ public class MinAboveValue implements Approvable{
         return approved;
 
     }
+
 }

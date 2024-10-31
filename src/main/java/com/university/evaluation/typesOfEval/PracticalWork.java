@@ -10,21 +10,20 @@ public class PracticalWork extends Evaluation {
         super(student, course, evaluationType, evaluationName);
     }
 
-
     @Override
     public float calculateGrade() {
-        float lastEj = 0;
-        for (Excercise excercise : excercises) {
-            if (Float.parseFloat(excercise.getName().substring(2)) > lastEj) {
-                lastEj = Float.parseFloat(excercise.getName().substring(2));
-            }
-        }
-        float grade = 0;
-        for (Excercise excercise : excercises) {
-            if (Float.parseFloat(excercise.getName().substring(2)) == lastEj) {
-                grade = excercise.getGrade();
-            }
-        }
-        return grade;
+        return excercises.getLast().getGrade();
+//        float lastEj = 0;
+////        for (Excercise excercise : excercises) {
+////            if (Float.parseFloat(excercise.getName().substring(2)) > lastEj) {
+////                lastEj = Float.parseFloat(excercise.getName().substring(2));
+////            }
+////        }
+////        float grade = 0;
+//////        for (Excercise excercise : excercises) {
+//////            if (Float.parseFloat(excercise.getName().substring(2)) == lastEj) {
+//////                grade = excercise.getGrade();
+//////            }
+//////        }
     }
 }

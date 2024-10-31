@@ -1,6 +1,6 @@
-package com.university.passingCriteria;
+package com.university.passingCriteria.criteria;
 
-public class MaxAboveValue implements Approvable{
+public class MaxAboveValue implements Checkers{
     private float grade;
     private float criteria;
     public MaxAboveValue(float grade, float criteria){

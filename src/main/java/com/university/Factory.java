@@ -6,6 +6,7 @@ import com.university.course.StudentsPerCourse;
 import com.university.csvFile.WriteCsv;
 import com.university.evaluation.CreateEvaluation;
 import com.university.evaluation.Evaluation;
+import com.university.passingCriteria.PassingCriteria;
 import com.university.sortable.Sorter;
 import com.university.student.CoursesPerStudent;
 import com.university.student.CreateStudent;
@@ -40,11 +41,13 @@ public class Factory {
         CreateStudent createStudent = new CreateStudent(data);
         students = createStudent.getStudents();
 
+        StudentsPerCourse studentsPerCourse = new StudentsPerCourse(data, students, courses);
+        CoursesPerStudent coursesPerStudent = new CoursesPerStudent(data, students, courses);
+
         CreateEvaluation evaluation = new CreateEvaluation(data2, courses, students);
         evaluations = evaluation.getEvaluations();
 
-        StudentsPerCourse studentsPerCourse = new StudentsPerCourse(data, students, courses);
-        CoursesPerStudent coursesPerStudent = new CoursesPerStudent(data, students, courses);
+        PassingCriteria passingCriteria = new PassingCriteria(data3, students, evaluations);
     }
 
 
@@ -61,6 +64,8 @@ public class Factory {
 
         WriteCsv expected2 = new WriteCsv("src/main/resources/solution_2.csv", evaluations, "Subject_Name,Evaluation_Name,Student_Name,Grade");
 
-
+//        Sorter<Student> sorter3 = new Sorter<>(students, Comparator.comparing(Student::getName)
+//                .thenComparing(Course::getSubject));
+//        WriteCsv solution3 = new WriteCsv("src/main/resources/solution_3.csv", orderedStudents, "Student_Name,Subject_Name,Approval");
     }
 }

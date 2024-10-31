@@ -1,4 +1,4 @@
-package com.university.AppTest.evaluationTest;
+package com.university.appTest.evaluationTest;
 
 import com.university.course.Course;
 import com.university.evaluation.CreateEvaluation;

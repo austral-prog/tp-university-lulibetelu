@@ -1,4 +1,4 @@
-package com.university.AppTest.courseTest;
+package com.university.appTest.courseTest;
 
 import com.university.course.CreateCourses;
 import com.university.course.StudentsPerCourse;

@@ -1,4 +1,4 @@
-package com.university.AppTest.csvTest;
+package com.university.appTest.csvTest;
 
 import com.university.csvFile.ReadCsv;
 import org.junit.jupiter.api.Test;
