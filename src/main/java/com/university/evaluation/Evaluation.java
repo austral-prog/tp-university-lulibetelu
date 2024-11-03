@@ -53,8 +53,9 @@ public abstract class Evaluation implements Formattable<Evaluation> {
     public abstract float calculateGrade();
 
     @Override
-    public String toStringForSolution() {
-        return course + "," + evaluationName + "," + student + "," +  getGrade();
+    public String[] toStringForSolution() {
+        String[] strings = {course + "," + evaluationName + "," + student + "," +  getGrade()};
+        return strings;
     }
 
     @Override

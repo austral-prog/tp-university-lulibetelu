@@ -47,7 +47,9 @@ public class Factory {
         CreateEvaluation evaluation = new CreateEvaluation(data2, courses, students);
         evaluations = evaluation.getEvaluations();
 
-        PassingCriteria passingCriteria = new PassingCriteria(data3, students, evaluations);
+        PassingCriteria passingCriteria = new PassingCriteria(students, data3);
+        //passingCriteria.mark();
+        //passingCriteria.checkIfAllExamsTaken();
     }
 
 
@@ -58,14 +60,12 @@ public class Factory {
 
         WriteCsv solution1 = new WriteCsv("src/main/resources/solution.csv", orderedStudents, "Student_Name,Course_Count");
 
-        Sorter<Evaluation> sorter2 = new Sorter<>(evaluations, Comparator.comparing(Evaluation::getCourse)
-                .thenComparing(Evaluation::getEvaluationName)
-                .thenComparing(Evaluation::getStudent));
+        Sorter<Evaluation> sorter2 = new Sorter<>(evaluations, Comparator.naturalOrder());
 
         WriteCsv expected2 = new WriteCsv("src/main/resources/solution_2.csv", evaluations, "Subject_Name,Evaluation_Name,Student_Name,Grade");
 
-//        Sorter<Student> sorter3 = new Sorter<>(students, Comparator.comparing(Student::getName)
-//                .thenComparing(Course::getSubject));
-//        WriteCsv solution3 = new WriteCsv("src/main/resources/solution_3.csv", orderedStudents, "Student_Name,Subject_Name,Approval");
+        Sorter<Course> sorter3 = new Sorter<>(courses, Comparator.naturalOrder());
+
+        WriteCsv solution3 = new WriteCsv("src/main/resources/solution_3.csv", courses, "Student_Name,Subject_Name,Approval");
     }
 }

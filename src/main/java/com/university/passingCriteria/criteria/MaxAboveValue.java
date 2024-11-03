@@ -1,6 +1,6 @@
 package com.university.passingCriteria.criteria;
 
-public class MaxAboveValue implements Checkers{
+public class MaxAboveValue implements Checkable {
     private float grade;
     private float criteria;
     public MaxAboveValue(float grade, float criteria){

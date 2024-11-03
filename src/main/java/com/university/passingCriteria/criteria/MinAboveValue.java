@@ -1,18 +1,22 @@
 package com.university.passingCriteria.criteria;
 
-public class MinAboveValue implements Checkers{
-    private float grade;
+import java.util.List;
+
+public class MinAboveValue implements Checkable {
+    private List<Float> grades;
     private float criteria;
-    public MinAboveValue(float grade, float criteria){
-        this.grade = grade;
+    public MinAboveValue(List<Float> grades, float criteria){
+        this.grades = grades;
         this.criteria = criteria;
     }
 
     @Override
     public boolean approved() {
-        boolean approved = false;
-        if (grade >= criteria){
-            approved = true;
+        boolean approved = true;
+        for (Float grade: grades) {
+            if (grade < criteria) {
+                approved = false;
+            }
         }
         return approved;
 

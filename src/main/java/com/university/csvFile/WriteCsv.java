@@ -18,8 +18,11 @@ public class WriteCsv {
             writer.append(categories) // Encabezado
                     .append("\n");
             for (Formattable element : solution) {
-                writer.append(element.toStringForSolution());
-                writer.append("\n");
+                for (int i= 0; i<element.toStringForSolution().length;i++){
+                    writer.append(element.toStringForSolution()[i]);
+                    writer.append("\n");
+                }
+
             }
         } catch (IOException e) {
             e.printStackTrace();

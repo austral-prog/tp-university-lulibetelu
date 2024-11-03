@@ -2,7 +2,7 @@ package com.university.passingCriteria.criteria;
 
 import java.util.List;
 
-public class AverageAboveValue implements Checkers{
+public class AverageAboveValue implements Checkable {
     private List<Float> grades;
     private float criteria;
     public AverageAboveValue(List<Float> grades, float criteria){
@@ -17,7 +17,7 @@ public class AverageAboveValue implements Checkers{
         for (Float grade: grades){
             sum += grade;
         }
-        if (sum / criteria > criteria){
+        if (sum / grades.size() >= criteria){
              approved = true;
         }
         return approved;

@@ -1,12 +1,13 @@
 package com.university.student;
 
+import com.university.Entity;
 import com.university.Formattable;
 import com.university.course.Course;
 import com.university.evaluation.Evaluation;
 
 import java.util.*;
 
-public class Student implements Formattable<Student> {
+public class Student implements Formattable<Student>, Entity {
     private String name;
     private String email;
     private List<Course> subjects;
@@ -56,26 +57,26 @@ public class Student implements Formattable<Student> {
 
 
     @Override
-    public String toStringForSolution() {
-        return name + "," + subjects.size(); }
-
-
-    public String toStringForSolution2(){
-        String message = "";
-        for (Map.Entry<String, List<Boolean>> entry : report.entrySet()){
-            if (entry.getValue().contains(false)){
-                message = name + "," + entry.getKey() + "," + "Desaprobado";
-            }
-            else{
-                message = name + "," + entry.getKey() + "," + "Aprobado";
-            }
-        }
-        return message;
+    public String[] toStringForSolution() {
+        String[] strings = {name + "," + subjects.size()};
+        return strings;
     }
+
+
 
     @Override
     public int compareTo(Student student) {
         return name.compareTo(student.getName());
         }
+
+    @Override
+    public int getId() {
+        return 0;
+    }
+
+    @Override
+    public void setId(int id) {
+
+    }
 }
 

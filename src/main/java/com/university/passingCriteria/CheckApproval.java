@@ -12,46 +12,45 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CheckApproval {
-    private Student student;
-    private Course course;
-    private List<Evaluation> evaluations;
-    private String[] datum;
-    private Float criteria;
-    public CheckApproval(Student student, Course course, List<Evaluation> evaluations, String[] datum){
-        this.student = student;
-        this.course = course;
-        this.evaluations = evaluations;
-        this.datum = datum;
-
-    }
-
-    public void criteria(){
-        for (Evaluation evaluation: evaluations){
-            if (evaluation.getCourse().equals(course.getSubject())){
-                List<Float> tp = new ArrayList<>();
-                int counter = 0;
-                while (counter < (Arrays.copyOfRange(datum,3, datum.length).length)) {
-                    if (datum[3].contains("TP")){
-                        tp.add(evaluation.getGrade());
-                        if (counter == (Arrays.copyOfRange(datum,3, datum.length).length-1)) {
-                            AverageAboveValue check = new AverageAboveValue(tp, (Arrays.copyOfRange(datum,3, datum.length).length));
-                            student.addReport(course.getSubject(), check.approved());
-                        }
-                        counter++;
+    public void criteria(Student student, Course course, String[] datum){
+        List<Float> tp = new ArrayList<>();
+        List<Float> parciales = new ArrayList<>();
+        for (Evaluation evaluation: student.getEvaluations()){
+            if (datum[3].equals("TP Final")){
+                if (evaluation.getEvaluationName().equals("TP Final") && evaluation.getCourse().equals(course.getSubject())){
+                    MaxAboveValue check = new MaxAboveValue(evaluation.getGrade(), Float.parseFloat(datum[2]));
+                    student.addReport(course.getSubject(), check.approved());
                     }
-                    else if (datum[3].contains("Final")){
-                        MaxAboveValue check = new MaxAboveValue(evaluation.getGrade(), Float.parseFloat(datum[2]));
+                }
+
+            else if (datum[3].contains("TP")){
+                if (evaluation.getEvaluationName().contains("TP")
+                        && !evaluation.getEvaluationName().equals("TP Final")
+                        && evaluation.getCourse().equals(course.getSubject())){
+                    tp.add(evaluation.getGrade());
+                    if (tp.size() == (Arrays.copyOfRange(datum, 3, datum.length).length)){
+                        AverageAboveValue check = new AverageAboveValue(tp, Float.parseFloat(datum[2]));
                         student.addReport(course.getSubject(), check.approved());
-                        counter ++;
-                    }
-                    else if (datum[3].contains("Parcial")){
-                        MinAboveValue check = new MinAboveValue(evaluation.getGrade(), Float.parseFloat(datum[2]));
-                        student.addReport(course.getSubject(), check.approved());
-                        counter++;
                     }
 
                 }
             }
+            else if (datum[3].contains("Final")){
+                if (evaluation.getEvaluationName().contains("Final") && evaluation.getCourse().equals(course.getSubject())){
+                    MaxAboveValue check = new MaxAboveValue(evaluation.getGrade(), Float.parseFloat(datum[2]));
+                    student.addReport(course.getSubject(), check.approved());
+                }
+            }
+            else if (datum[3].contains("Parcial")){
+                if (evaluation.getEvaluationName().contains("Parcial") && evaluation.getCourse().equals(course.getSubject())){
+                    parciales.add(evaluation.getGrade());
+                    if (parciales.size() == (Arrays.copyOfRange(datum, 3, datum.length)).length){
+                        MinAboveValue check = new MinAboveValue(parciales, Float.parseFloat(datum[2]));
+                        student.addReport(course.getSubject(), check.approved());
+                    }
+                }
+            }
         }
+
     }
 }

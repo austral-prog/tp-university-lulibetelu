@@ -39,7 +39,6 @@ public class CreateEvaluation {
                         for (Student student: students) {
                             if (student.getName().equals(datum[0])) {
                                 Excercise excercise = new Excercise(datum[4], datum[5]);
-
                                 if (datum[2].contains("FINAL")){
                                   Evaluation eval = new FinalExam(student, course, datum[2], datum[3]);
                                   student.addEvaluation(eval);
