@@ -6,8 +6,8 @@ import com.university.evaluation.Excercise;
 import com.university.student.Student;
 
 public class WrittenExam extends Evaluation {
-    public WrittenExam(Student student, Course course, String evaluationType, String evaluationName){
-        super(student, course, evaluationType, evaluationName);
+    public WrittenExam(String evaluationType, String evaluationName){
+        super(evaluationType, evaluationName);
     }
     @Override
     public float calculateGrade() {
@@ -19,4 +19,10 @@ public class WrittenExam extends Evaluation {
         }
         return sum/counter;
     }
+
+    @Override
+    public int getId() { return Id; }
+
+    @Override
+    public void setId(int id) { Id = id; }
 }

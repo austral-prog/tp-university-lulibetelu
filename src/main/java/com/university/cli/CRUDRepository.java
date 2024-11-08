@@ -1,4 +1,8 @@
-package com.university;
+package com.university.cli;
+
+import com.university.cli.entities.Entity;
+import com.university.cli.exceptions.DuplicateIdException;
+import com.university.cli.exceptions.EntityNotFoundException;
 
 public interface CRUDRepository<T extends Entity> {
     /**
@@ -6,7 +10,7 @@ public interface CRUDRepository<T extends Entity> {
      *
      * @param entity the entity to be created
      */
-    void create(T entity);
+    void create(T entity) throws DuplicateIdException;
 
     /**
      * Reads or retrieves an entity from the repository based on its ID.
@@ -14,7 +18,7 @@ public interface CRUDRepository<T extends Entity> {
      * @param id the unique identifier of the entity to be read
      * @return the entity found with the given ID, or null if not found
      */
-    T read(int id);
+    T read(int id) throws EntityNotFoundException;
 
     /**
      * Updates an existing entity in the repository.
@@ -22,7 +26,7 @@ public interface CRUDRepository<T extends Entity> {
      * @param id the unique identifier of the entity to be updated
      * @param entity the updated entity information
      */
-    void update(int id, T entity);
+    void update(int id, T entity) throws EntityNotFoundException;
 
     /**
      * Deletes an entity from the repository based on its ID.

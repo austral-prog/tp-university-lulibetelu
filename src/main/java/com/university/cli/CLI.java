@@ -1,4 +1,4 @@
-package com.university;
+package com.university.cli;
 
 public interface CLI {
     /**

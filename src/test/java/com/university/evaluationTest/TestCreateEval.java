@@ -3,6 +3,10 @@ package com.university.evaluationTest;
 import com.university.course.Course;
 import com.university.evaluation.CreateEvaluation;
 import com.university.evaluation.Evaluation;
+import com.university.evaluation.typesOfEval.FinalExam;
+import com.university.evaluation.typesOfEval.OralExam;
+import com.university.evaluation.typesOfEval.PracticalWork;
+import com.university.evaluation.typesOfEval.WrittenExam;
 import com.university.student.Student;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -97,6 +101,22 @@ public class TestCreateEval {
 
         assertEquals(2, evaluations.size());
 
+    }
+    @Test
+    public void testID(){
+        Evaluation finalExam = new FinalExam("Final", "exam");
+        Evaluation oralExam = new OralExam("Oral", "speach");
+        Evaluation practicalWork = new PracticalWork("TP", "tp5");
+        Evaluation writtenExam = new WrittenExam("Exam", "x");
 
+        finalExam.setId(1);
+        oralExam.setId(2);
+        practicalWork.setId(3);
+        writtenExam.setId(4);
+
+        assertEquals(1, finalExam.getId());
+        assertEquals(2, oralExam.getId());
+        assertEquals(3, practicalWork.getId());
+        assertEquals(4, writtenExam.getId());
     }
 }

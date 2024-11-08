@@ -16,6 +16,7 @@ public class TestCreateStudents {
         data.add(new String[]{"578", "Political Science", "Olivia Red", "olivia.red@student.org", "Prof. Sam"});
         CreateStudent newStudent = new CreateStudent(data);
 
+
         assertEquals("Olivia Red", newStudent.getStudents().getFirst().getName());
         assertEquals("olivia.red@student.org", newStudent.getStudents().getFirst().getEmail());
 
@@ -35,7 +36,20 @@ public class TestCreateStudents {
     @Test
     public void test2ToStringForSolution(){
         Student student= new Student("Facu", "facu@mail");
-        assertEquals("Facu,0",student.toStringForSolution());
+        assertEquals("Facu,0",student.toStringForSolution()[0]);
+    }
+    @Test
+    public void testCompareTo(){
+        Student student = new Student("Facu", "facu@mail");
+        Student student2 = new Student("Juan", "juan@mail");
+        assertEquals(-4, student.compareTo(student2));
+        assertEquals(4, student2.compareTo(student));
+    }
+    @Test
+    public void testID(){
+        Student student = new Student("Facu", "facu@mail");
+        student.setId(5);
+        assertEquals(5, student.getId());
     }
 }
 

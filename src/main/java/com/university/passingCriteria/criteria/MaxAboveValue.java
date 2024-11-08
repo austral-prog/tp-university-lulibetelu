@@ -1,17 +1,16 @@
 package com.university.passingCriteria.criteria;
 
+import java.util.List;
+
 public class MaxAboveValue implements Checkable {
-    private float grade;
-    private float criteria;
-    public MaxAboveValue(float grade, float criteria){
-        this.grade = grade;
-        this.criteria = criteria;
-    }
-    public boolean approved(){
+    public boolean approved(List<Float> grades, float criteria){
         boolean approved = false;
-        if (grade <= criteria){
-            approved = true;
+        for (Float grade: grades) {
+            if (grade <= criteria) {
+                approved = true;
+            }
         }
         return approved;
+
     }
 }

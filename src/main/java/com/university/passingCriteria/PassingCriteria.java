@@ -7,15 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class PassingCriteria {
-    private List<Student> students;
-    private List<String[]> data3;
-    public PassingCriteria(List<Student> students, List<String[]> data3){
-        this.students = students;
-        this.data3 = data3;
-        mark();
-        checkIfAllExamsTaken();
-    }
-    public void mark(){
+    public void mark(List<Student> students, List<String[]> data3){
         CheckApproval checkApproval = new CheckApproval();
         for (Student student: students){
             for (String[] datum: data3){
@@ -28,10 +20,10 @@ public class PassingCriteria {
             }
         }
     }
-    public void checkIfAllExamsTaken(){
+    public void checkIfAllExamsTaken(List<Student> students){
         for (Student student: students){
             for (Course course: student.getSubjects()) {
-                if (!student.getReport().keySet().contains(course.getSubject())){
+                if (!student.getReport().containsKey(course.getSubject())){
                     student.addReport(course.getSubject(), false);
                 }
 

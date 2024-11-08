@@ -53,12 +53,20 @@ public class TestSorter {
     @Test
     public void testSorterEvaluations(){
 
-        Evaluation eval1 = new WrittenExam(students.getFirst(), courses.getFirst(), "Written", "Final");
+        Evaluation eval1 = new WrittenExam("Written", "Final");
         evaluations.add(eval1);
-        Evaluation eval2 = new PracticalWork(students.get(1), courses.get(1), "Practical", "TP");
+        eval1.setStudent(students.getFirst());
+        eval1.setCourse(courses.getFirst());
+
+        Evaluation eval2 = new PracticalWork("Practical", "TP");
         evaluations.add(eval2);
-        Evaluation eval3 = new OralExam(students.get(2), courses.get(2), "Oral", "Exam");
+        eval2.setStudent(students.get(1));
+        eval2.setCourse(courses.get(1));
+
+        Evaluation eval3 = new OralExam("Oral", "Exam");
         evaluations.add(eval3);
+        eval3.setStudent(students.get(2));
+        eval3.setCourse(courses.get(2));
 
         Excercise e1 = new Excercise("Ej2", "5");
         Excercise e2 = new Excercise("E1", "7");

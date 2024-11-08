@@ -1,6 +1,6 @@
 package com.university.student;
 
-import com.university.Entity;
+import com.university.cli.entities.Entity;
 import com.university.Formattable;
 import com.university.course.Course;
 import com.university.evaluation.Evaluation;
@@ -12,8 +12,8 @@ public class Student implements Formattable<Student>, Entity {
     private String email;
     private List<Course> subjects;
     private List<Evaluation> evaluations;
-
     private HashMap<String, List<Boolean>> report;
+    private int Id;
 
     public Student(String name, String email){
         this.name = name;
@@ -21,6 +21,7 @@ public class Student implements Formattable<Student>, Entity {
         this.subjects = new ArrayList<>();
         this.report = new HashMap<>();
         this.evaluations = new ArrayList<>();
+        this.Id = 0;
     }
 
     public String getName() { return name; }
@@ -43,9 +44,6 @@ public class Student implements Formattable<Student>, Entity {
         evaluations.add(eval);
     }
 
-    public int courseCount(){ return subjects.size(); }
-
-
     public void addReport(String course, Boolean x){
         if (report.containsKey(course)){
             report.get(course).add(x);
@@ -55,14 +53,11 @@ public class Student implements Formattable<Student>, Entity {
         }
     }
 
-
     @Override
     public String[] toStringForSolution() {
         String[] strings = {name + "," + subjects.size()};
         return strings;
     }
-
-
 
     @Override
     public int compareTo(Student student) {
@@ -71,12 +66,10 @@ public class Student implements Formattable<Student>, Entity {
 
     @Override
     public int getId() {
-        return 0;
+        return Id;
     }
 
     @Override
-    public void setId(int id) {
-
-    }
+    public void setId(int id) { Id = id; }
 }
 

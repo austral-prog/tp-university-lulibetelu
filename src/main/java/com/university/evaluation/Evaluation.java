@@ -1,5 +1,6 @@
 package com.university.evaluation;
 
+import com.university.cli.entities.Entity;
 import com.university.Formattable;
 import com.university.course.Course;
 import com.university.student.Student;
@@ -7,20 +8,21 @@ import com.university.student.Student;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Evaluation implements Formattable<Evaluation> {
+public abstract class Evaluation implements Formattable<Evaluation>, Entity {
     protected String student;
     protected String course;
     protected String evaluationType;
     protected String evaluationName;
     protected List<Excercise> excercises;
+    protected int Id;
 
-    public Evaluation(Student student, Course course, String evaluationType, String evaluationName) {
-        this.student = student.getName();
-        this.course = course.getSubject();
+    public Evaluation(String evaluationType, String evaluationName) {
+        this.student = "";
+        this.course = "";
         this.evaluationType = evaluationType;
         this.evaluationName = evaluationName;
-
         this.excercises = new ArrayList<>();
+        this.Id = 0;
     }
     public String getEvaluationType(){
         return evaluationType;
@@ -51,6 +53,14 @@ public abstract class Evaluation implements Formattable<Evaluation> {
     }
 
     public abstract float calculateGrade();
+
+    public void setStudent(Student newStudent){
+        student = newStudent.getName();
+    }
+
+    public void setCourse(Course newCourse){
+        course = newCourse.getSubject();
+    }
 
     @Override
     public String[] toStringForSolution() {

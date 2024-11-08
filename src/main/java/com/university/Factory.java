@@ -47,9 +47,9 @@ public class Factory {
         CreateEvaluation evaluation = new CreateEvaluation(data2, courses, students);
         evaluations = evaluation.getEvaluations();
 
-        PassingCriteria passingCriteria = new PassingCriteria(students, data3);
-        //passingCriteria.mark();
-        //passingCriteria.checkIfAllExamsTaken();
+        PassingCriteria passingCriteria = new PassingCriteria();
+        passingCriteria.mark(students, data3);
+        passingCriteria.checkIfAllExamsTaken(students);
     }
 
 
@@ -66,6 +66,6 @@ public class Factory {
 
         Sorter<Course> sorter3 = new Sorter<>(courses, Comparator.naturalOrder());
 
-        WriteCsv solution3 = new WriteCsv("src/main/resources/solution_3.csv", courses, "Student_Name,Subject_Name,Approval");
+        WriteCsv solution3 = new WriteCsv("src/main/resources/solution_3.csv", courses, "Subject_Name,Student_Name,Approval");
     }
 }

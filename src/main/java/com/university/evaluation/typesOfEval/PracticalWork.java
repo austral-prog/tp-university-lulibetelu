@@ -6,8 +6,8 @@ import com.university.evaluation.Excercise;
 import com.university.student.Student;
 
 public class PracticalWork extends Evaluation {
-    public PracticalWork(Student student, Course course, String evaluationType, String evaluationName){
-        super(student, course, evaluationType, evaluationName);
+    public PracticalWork(String evaluationType, String evaluationName){
+        super(evaluationType, evaluationName);
     }
 
     @Override
@@ -26,4 +26,10 @@ public class PracticalWork extends Evaluation {
 //////            }
 //////        }
     }
+
+    @Override
+    public int getId() { return Id; }
+
+    @Override
+    public void setId(int id) { Id = id;}
 }

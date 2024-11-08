@@ -1,6 +1,8 @@
 package com.university.courseTest;
 
+import com.university.course.Course;
 import com.university.course.CreateCourses;
+import com.university.student.Student;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -31,5 +33,12 @@ public class TestCreateCourses {
         CreateCourses newCourse = new CreateCourses(data);
 
         assertEquals(1, newCourse.getCourses().size());
+    }
+    @Test
+    public void testID(){
+        Course course = new Course("15", "Math", "Sam");
+        course.setId(6);
+        assertEquals(6, course.getId());
+
     }
 }

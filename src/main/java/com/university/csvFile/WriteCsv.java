@@ -19,8 +19,11 @@ public class WriteCsv {
                     .append("\n");
             for (Formattable element : solution) {
                 for (int i= 0; i<element.toStringForSolution().length;i++){
-                    writer.append(element.toStringForSolution()[i]);
-                    writer.append("\n");
+                    if (!element.toStringForSolution()[i].equals("")) {
+                        writer.append(element.toStringForSolution()[i]);
+                        writer.append("\n");
+                    }
+
                 }
 
             }

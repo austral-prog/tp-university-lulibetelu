@@ -20,10 +20,11 @@ public class TestAddReport {
         List<Float> grades = new ArrayList<>();
         grades.add((float) 7.0);
         grades.add((float) 8.0);
-        MinAboveValue p1 = new MinAboveValue(grades, 6);
+        MinAboveValue p1 = new MinAboveValue();
+        boolean pass = p1.approved(grades, 6);
 
-        student.addReport(course.getSubject(), p1.approved());
-        assertTrue(p1.approved());
+        student.addReport(course.getSubject(), pass);
+        assertTrue(pass);
         assertFalse(student.getReport().get(course.getSubject()).isEmpty());
         assertEquals(1, student.getReport().get(course.getSubject()).size());
         assertTrue(student.getReport().get(course.getSubject()).getFirst());
@@ -36,10 +37,11 @@ public class TestAddReport {
         List<Float> grades = new ArrayList<>();
         grades.add((float) 5.0);
         grades.add((float) 8.0);
-        MinAboveValue p1 = new MinAboveValue(grades, 6);
+        MinAboveValue p1 = new MinAboveValue();
+        boolean pass = p1.approved(grades, 6);
 
-        student.addReport(course.getSubject(), p1.approved());
-        assertFalse(p1.approved());
+        student.addReport(course.getSubject(), pass);
+        assertFalse(pass);
         assertFalse(student.getReport().get(course.getSubject()).isEmpty());
         assertEquals(1, student.getReport().get(course.getSubject()).size());
         assertFalse(student.getReport().get(course.getSubject()).getFirst());
@@ -48,10 +50,13 @@ public class TestAddReport {
     public void testAddTrueReportMax(){
         Student student = new Student("Juan", "juan@mail");
         Course course = new Course("555", "Maths", "Sam");
-        MaxAboveValue p1 = new MaxAboveValue((float) 5.0, 6);
-        student.addReport(course.getSubject(), p1.approved());
+        List<Float> grades = new ArrayList<>();
+        grades.add((float) 5.0);
+        MaxAboveValue p1 = new MaxAboveValue();
+        boolean pass = p1.approved(grades, 6);
+        student.addReport(course.getSubject(), pass);
 
-        assertTrue(p1.approved());
+        assertTrue(pass);
         assertFalse(student.getReport().get(course.getSubject()).isEmpty());
         assertEquals(1, student.getReport().get(course.getSubject()).size());
         assertTrue(student.getReport().get(course.getSubject()).getFirst());
@@ -60,10 +65,13 @@ public class TestAddReport {
     public void testAddFalseReportMax(){
         Student student = new Student("Juan", "juan@mail");
         Course course = new Course("555", "Maths", "Sam");
-        MaxAboveValue p1 = new MaxAboveValue((float) 7.0, 6);
-        student.addReport(course.getSubject(), p1.approved());
+        List<Float> grades = new ArrayList<>();
+        grades.add((float) 7.0);
+        MaxAboveValue p1 = new MaxAboveValue();
+        boolean pass = p1.approved(grades, 6);
+        student.addReport(course.getSubject(), pass);
 
-        assertFalse(p1.approved());
+        assertFalse(pass);
         assertFalse(student.getReport().get(course.getSubject()).isEmpty());
         assertEquals(1, student.getReport().get(course.getSubject()).size());
         assertFalse(student.getReport().get(course.getSubject()).getFirst());
@@ -75,10 +83,11 @@ public class TestAddReport {
         List<Float> grades = new ArrayList<>();
         grades.add((float) 6.0);
         grades.add((float) 8.0);
-        AverageAboveValue p1 = new AverageAboveValue(grades, 6);
-        student.addReport(course.getSubject(), p1.approved());
+        AverageAboveValue p1 = new AverageAboveValue();
+        boolean pass = p1.approved(grades, 6);
+        student.addReport(course.getSubject(), pass);
 
-        assertTrue(p1.approved());
+        assertTrue(pass);
         assertFalse(student.getReport().get(course.getSubject()).isEmpty());
         assertEquals(1, student.getReport().get(course.getSubject()).size());
         assertTrue(student.getReport().get(course.getSubject()).getFirst());
@@ -89,10 +98,11 @@ public class TestAddReport {
         List<Float> grades = new ArrayList<>();
         grades.add((float) 3.0);
         grades.add((float) 7.0);
-        AverageAboveValue p1 = new AverageAboveValue(grades, 6);
-        student.addReport(course.getSubject(), p1.approved());
+        AverageAboveValue p1 = new AverageAboveValue();
+        boolean pass = p1.approved(grades, 6);
+        student.addReport(course.getSubject(), pass);
 
-        assertFalse(p1.approved());
+        assertFalse(pass);
         assertFalse(student.getReport().get(course.getSubject()).isEmpty());
         assertEquals(1, student.getReport().get(course.getSubject()).size());
         assertFalse(student.getReport().get(course.getSubject()).getFirst());
@@ -105,12 +115,20 @@ public class TestAddReport {
         grades.add((float) 5.0);
         grades.add((float) 8.0);
 
-        MinAboveValue p1 = new MinAboveValue(grades, 5);
-        student.addReport(course.getSubject(), p1.approved());
-        MaxAboveValue p2 = new MaxAboveValue(8, 7);
-        student.addReport(course.getSubject(), p2.approved());
-        AverageAboveValue p3 = new AverageAboveValue(grades, 4);
-        student.addReport(course.getSubject(), p3.approved());
+        List<Float> tpFinal = new ArrayList<>();
+        tpFinal.add((float) 8.0);
+
+        MinAboveValue p1 = new MinAboveValue();
+        boolean pass1 = p1.approved(grades, 5);
+        student.addReport(course.getSubject(), pass1);
+
+        MaxAboveValue p2 = new MaxAboveValue();
+        boolean pass2 = p2.approved(tpFinal, 7);
+        student.addReport(course.getSubject(), pass2);
+
+        AverageAboveValue p3 = new AverageAboveValue();
+        boolean pass3 = p3.approved(grades, 4);
+        student.addReport(course.getSubject(), pass3);
 
 
         assertFalse(student.getReport().get(course.getSubject()).isEmpty());
